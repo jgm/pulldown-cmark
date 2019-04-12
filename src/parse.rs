@@ -1544,7 +1544,7 @@ impl InlineStack {
             .enumerate()
             .rev()
             .find(|(_, el)| {
-                el.c == c && (!both && !el.both || (count + el.count) % 3 != 0)
+                el.c == c && (!both && !el.both || count % 3 == 0 || (count + el.count) % 3 != 0)
             })
     }
 
