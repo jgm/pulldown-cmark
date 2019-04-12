@@ -171,10 +171,8 @@ fn run_spec(spec_text: &str, args: &[String], opts: Options) {
         if our_html == test.expected.replace("→", "\t") {
             print!(".");
         } else {
-            if tests_failed == 0 {
-                fail_report = format!("\nFAIL {}:\n\n---input---\n{:?}\n\n---wanted---\n{:?}\n\n---got---\n{:?}\n",
-                    test.n, test.input, test.expected, our_html);
-            }
+            fail_report.push_str(&format!("\nFAIL {}:\n\n---input---\n{:?}\n\n---wanted---\n{:?}\n\n---got---\n{:?}\n",
+                    test.n, test.input, test.expected, our_html));
             print!("X");
             tests_failed += 1;
         }
